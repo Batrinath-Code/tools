@@ -15,74 +15,67 @@ const data: foodMenuListType[] = [
   { name: "Pongal", img: whitePongal, price: 10 },
 ];
 
-function page() {
+function Page() {
   return (
-    <div className="relative w-full h-screen bg-gray-100 flex items-center justify-between">
-      {/* <!-- Left Rectangle --> */}
-      <div className="w-[20%]">
+    <div className="relative w-full min-h-screen bg-gray-100 flex flex-col lg:flex-row items-center justify-between">
+      {/* Left Rectangle */}
+      <div className="w-full lg:w-[20%] hidden lg:block">
         <Image src={menuleftimg} alt="menu left images" />
       </div>
 
-      {/* <!-- Content Area --> */}
-      <div className="w-[60%] h-full bg-white ">
-        <h2 className="mt-28 font-semibold text-2xl md:text-7xl text-center my-5 underline">
+      {/* Content Area */}
+      <div className="w-full lg:w-[60%] bg-white px-4 py-8">
+        <h2 className="mt-10 font-semibold text-2xl md:text-5xl text-center my-5 underline">
           Monday Food Menu List
         </h2>
 
-        <table className="mt-28 outline table-auto w-full text-center">
-          <thead>
-            <tr className="px-5 py-5 border-b border-gray-200 bg-white">
-              <th className=" px-9 ps-28 py-7 border-b-2 border-gray-200 bg-gray-100 text-left text-4xl font-bold text-gray-700 uppercase tracking-wider">
-                Food Image
-              </th>
-
-              <th className="px-9 py-7 border-b-2 border-gray-200 bg-gray-100 text-left text-4xl font-bold text-gray-700 uppercase tracking-wider">
-                Price
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((item, index) => {
-              return (
-                <tr  key={index}>
-                  <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                    <div className="flex justify-start items-center gap-8">
-                      <div className="flex-shrink-0 w-50 h-50">
+        <div className="overflow-x-auto">
+          <table className="w-full border-collapse">
+            <thead>
+              <tr className="bg-gray-100">
+                <th className="px-4 py-4 text-left text-sm md:text-lg font-bold text-gray-700">
+                  Food Image
+                </th>
+                <th className="px-4 py-4 text-left text-sm md:text-lg font-bold text-gray-700">
+                  Price
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.map((item, index) => (
+                <tr key={index} className="border-b border-gray-200">
+                  <td className="px-4 py-4">
+                    <div className="flex items-center gap-4">
+                      <div className="w-16 h-16 md:w-20 md:h-20">
                         <Image
                           className="w-full h-full rounded-full"
                           src={item.img}
                           alt={item.name}
                         />
                       </div>
-                      <div className="ml-3">
-                        <p className="text-4xl font-medium text-gray-900 whitespace-no-wrap">
-                          {item.name}
-                        </p>
-                      </div>
+                      <p className="text-base md:text-2xl font-medium text-gray-900">
+                        {item.name}
+                      </p>
                     </div>
                   </td>
-                  <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                    <p
-                      className="text-4xl text-left
-                     text-gray-900 whitespace-no-wrap"
-                    >
-                      ₹10
+                  <td className="px-4 py-4">
+                    <p className="text-base md:text-2xl text-gray-900">
+                      ₹{item.price}
                     </p>
                   </td>
                 </tr>
-              );
-            })}
-          </tbody>
-        </table>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
 
-      {/* <!-- Right Rectangle --> */}
-      <div className="w-[20%] ">
-        {" "}
-        <Image src={menurightimg} alt="menu left images" />
+      {/* Right Rectangle */}
+      <div className="w-full lg:w-[20%] hidden lg:block">
+        <Image src={menurightimg} alt="menu right images" />
       </div>
     </div>
   );
 }
 
-export default page;
+export default Page;
