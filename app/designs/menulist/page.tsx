@@ -17,7 +17,7 @@ const data: foodMenuListType[] = [
 
 function Page() {
   return (
-    <div className="relative w-full min-h-screen bg-gray-100 flex flex-col lg:flex-row items-center justify-between">
+    <div className="relative w-full min-h-screen bg-gray-100 flex flex-col lg:flex-row items-start justify-between">
       {/* Left Rectangle */}
       <div className="w-full lg:w-[20%] hidden lg:block">
         <Image src={menuleftimg} alt="menu left images" />
